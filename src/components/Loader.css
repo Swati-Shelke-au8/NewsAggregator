@@ -24,3 +24,9 @@
     transform: rotate(360deg);
   }
 }
+
+@media (max-width: 600px) {
+  .loader-container {
+    margin-top: 5rem;
+  }
+}

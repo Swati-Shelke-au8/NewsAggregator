@@ -14,7 +14,8 @@
 
 .filled-search,
 .outlined-select-Categories,
-.outlined-select-Sources {
+.outlined-select-Sources,
+.filled-date {
   width: 30% !important;
 
   svg {
@@ -65,6 +66,14 @@
 
 .css-1oqqzyl-MuiContainer-root {
   max-width: max-content !important;
+}
+
+.custom-date-icon .MuiInputBase-input::-webkit-calendar-picker-indicator {
+  color: #ffffff;
+}
+
+.custom-date-icon .MuiInputBase-input {
+  color: #ffffff;
 }
 
 @media (max-width: 600px) {

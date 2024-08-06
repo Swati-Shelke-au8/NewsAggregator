@@ -7,7 +7,7 @@ import { Stack, Pagination } from "@mui/material";
 import Carousel from "react-material-ui-carousel";
 import ArticleCarousel from "./ArticleCarousel";
 
-const NewsAggregator = ({ query, category, source }) => {
+const NewsAggregator = ({ query, date, author, category, source }) => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
@@ -43,6 +43,8 @@ const NewsAggregator = ({ query, category, source }) => {
         20
       ),
       source: "NewsAPI",
+      date: article.publishedAt,
+      author: article.author || "Unknown",
     }));
   };
 
@@ -53,7 +55,7 @@ const NewsAggregator = ({ query, category, source }) => {
         params: {
           ...params,
           "api-key": "10dd4545-0367-49a0-917d-3b687bff2bc1",
-          "show-fields": "thumbnail,bodyText",
+          "show-fields": "thumbnail,bodyText,byline",
           page: params.page,
           "page-size": params.pageSize,
           section:
@@ -72,6 +74,8 @@ const NewsAggregator = ({ query, category, source }) => {
         20
       ),
       source: "The Guardian",
+      date: article.webPublicationDate,
+      author: article.fields?.byline || "Unknown",
     }));
   };
 
@@ -101,7 +105,25 @@ const NewsAggregator = ({ query, category, source }) => {
         20
       ),
       source: "NYT",
+      date: article.pub_date,
+      author: article.byline?.original || "Unknown",
     }));
+  };
+
+  const filterByDate = (articles) => {
+    if (!date) return articles;
+    return articles.filter((article) => {
+      const articleDate = new Date(article.date);
+      const filterDate = new Date(date);
+      return articleDate.toDateString() === filterDate.toDateString();
+    });
+  };
+
+  const filterByAuthor = (articles) => {
+    if (!author) return articles;
+    return articles.filter((article) =>
+      article.author.toLowerCase().includes(author.toLowerCase())
+    );
   };
 
   useEffect(() => {
@@ -111,6 +133,8 @@ const NewsAggregator = ({ query, category, source }) => {
         const params = {
           page: page,
           pageSize: pageSize,
+          from: date || undefined,
+          to: date || undefined,
         };
 
         if (query) {
@@ -141,9 +165,12 @@ const NewsAggregator = ({ query, category, source }) => {
           totalResults = articlesFromAPI.length;
         }
 
-        const filteredArticles = articlesFromAPI.filter((article) =>
+        let filteredArticles = articlesFromAPI.filter((article) =>
           article.title.toLowerCase().includes(query.toLowerCase())
         );
+
+        filteredArticles = filterByDate(filteredArticles);
+        filteredArticles = filterByAuthor(filteredArticles);
 
         setArticles(filteredArticles);
         setTotalResults(filteredArticles.length);
@@ -154,7 +181,7 @@ const NewsAggregator = ({ query, category, source }) => {
     };
 
     fetchArticles();
-  }, [query, category, source, page]);
+  }, [query, author, date, category, source, page]);
 
   const handlePageChange = (event, value) => {
     setPage(value);
@@ -162,37 +189,41 @@ const NewsAggregator = ({ query, category, source }) => {
 
   return (
     <div className="news-aggregator">
-      <div>
-        <Carousel>
-          {articles.map((article, index) => (
-            <ArticleCarousel key={index} article={article} />
-          ))}
-        </Carousel>
-      </div>
-      <div className="article-list">
-        {loading ? (
-          <Loader />
-        ) : articles.length > 0 ? (
-          articles
-            .slice((page - 1) * pageSize, page * pageSize)
-            .map((article, index) => (
-              <ArticleCard key={index} article={article} />
-            ))
-        ) : (
-          <p>No articles found.</p>
-        )}
-      </div>
-      <div className="pagination-controls">
-        <Stack spacing={2}>
-          <Pagination
-            count={Math.ceil(totalResults / pageSize)}
-            page={page}
-            variant="outlined"
-            shape="rounded"
-            onChange={handlePageChange}
-          />
-        </Stack>
-      </div>
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <div>
+            <Carousel>
+              {articles.map((article, index) => (
+                <ArticleCarousel key={index} article={article} />
+              ))}
+            </Carousel>
+          </div>
+          <div className="article-list">
+            {articles.length > 0 ? (
+              articles
+                .slice((page - 1) * pageSize, page * pageSize)
+                .map((article, index) => (
+                  <ArticleCard key={index} article={article} />
+                ))
+            ) : (
+              <p>No articles found.</p>
+            )}
+          </div>
+          <div className="pagination-controls">
+            <Stack spacing={2}>
+              <Pagination
+                count={Math.ceil(totalResults / pageSize)}
+                page={page}
+                variant="outlined"
+                shape="rounded"
+                onChange={handlePageChange}
+              />
+            </Stack>
+          </div>
+        </>
+      )}
     </div>
   );
 };

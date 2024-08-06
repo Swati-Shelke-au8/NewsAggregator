@@ -34,6 +34,8 @@ function App(props) {
   };
 
   const [query, setQuery] = useState("");
+  const [date, setDate] = useState("");
+  const [author, setAuthor] = useState("");
   const [category, setCategory] = useState("All Categories");
   const [source, setSource] = useState("All Sources");
 
@@ -70,7 +72,26 @@ function App(props) {
               type="search"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              sx={{ ml: 2, mr: 2 }}
+              sx={{ ml: 1, mr: 1 }}
+            />
+            <TextField
+              id="filled-author"
+              className="filled-author"
+              variant="standard"
+              placeholder="Author"
+              value={author}
+              type="text"
+              onChange={(e) => setAuthor(e.target.value)}
+              sx={{ ml: 1, mr: 1 }}
+            />
+            <TextField
+              id="filled-date"
+              className="filled-date custom-date-icon"
+              variant="standard"
+              type="date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+              sx={{ ml: 1, mr: 1 }}
             />
             <TextField
               id="outlined-select-Categories"
@@ -79,7 +100,7 @@ function App(props) {
               label=""
               value={category}
               onChange={(e) => setCategory(e.target.value)}
-              sx={{ ml: 2, mr: 2 }}
+              sx={{ ml: 1, mr: 1 }}
               variant="standard"
             >
               {Categories.map((option) => (
@@ -95,7 +116,7 @@ function App(props) {
               label=""
               value={source}
               onChange={(e) => setSource(e.target.value)}
-              sx={{ ml: 2 }}
+              sx={{ ml: 1 }}
               variant="standard"
             >
               {Sources.map((option) => (
@@ -110,7 +131,13 @@ function App(props) {
       <Toolbar id="back-to-top-anchor" />
       <Container>
         <Box sx={{ my: 2 }}>
-          <NewsAggregator query={query} category={category} source={source} />
+          <NewsAggregator
+            query={query}
+            date={date}
+            author={author}
+            category={category}
+            source={source}
+          />
         </Box>
       </Container>
       <Fade in={trigger}>

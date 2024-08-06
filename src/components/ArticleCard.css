@@ -35,6 +35,17 @@
   font-weight: 600;
 }
 
+.article-date {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #000000;
+}
+
+.article-date-and-author {
+  display: flex;
+  justify-content: space-between;
+}
+
 .article-description {
   font-size: 1em;
   color: #555;

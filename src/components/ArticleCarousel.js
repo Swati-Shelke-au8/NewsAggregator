@@ -6,8 +6,8 @@ const ArticleCarousel = ({ article }) => {
   return (
     <div className="article-carousel">
       <Box sx={{ flexGrow: 1 }}>
-        <Grid container spacing={2}>
-          <Grid item xs={8}>
+        <Grid container spacing={2} className="article-carousel-grid">
+          <Grid item xs={12} sm={12} md={8} lg={8}>
             {article.image && (
               <img
                 src={article.image}
@@ -16,7 +16,7 @@ const ArticleCarousel = ({ article }) => {
               />
             )}{" "}
           </Grid>
-          <Grid item xs={4} className="carousel-image">
+          <Grid item xs={12} sm={12} md={4} lg={4} className="carousel-image">
             <div>
               <h2 className="article-carousel-title">{article.title}</h2>
               <p className="article-carousel-description">

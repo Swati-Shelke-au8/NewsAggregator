@@ -12,3 +12,15 @@
   border-radius: 4px;
   object-fit: fill;
 }
+@media (max-width: 600px) {
+  .article-carousel-grid {
+    flex-direction: column !important;
+  }
+  .article-carousel-image {
+    height: 25vh;
+  }
+  .article-carousel-title,
+  .article-carousel-discription {
+    font-size: 1rem;
+  }
+}

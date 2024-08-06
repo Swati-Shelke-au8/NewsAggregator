@@ -162,6 +162,7 @@ const NewsAggregator = ({ query, date, author, category, source }) => {
             fetchFromNYTAPI(params),
           ]);
           articlesFromAPI = [...guardianArticles, ...nytArticles];
+          // eslint-disable-next-line no-unused-vars
           totalResults = articlesFromAPI.length;
         }
 
@@ -181,6 +182,7 @@ const NewsAggregator = ({ query, date, author, category, source }) => {
     };
 
     fetchArticles();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query, author, date, category, source, page]);
 
   const handlePageChange = (event, value) => {

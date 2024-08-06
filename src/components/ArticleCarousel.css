@@ -23,4 +23,7 @@
   .article-carousel-discription {
     font-size: 1rem;
   }
+  .article-carousel {
+    height: 75vh;
+  }
 }

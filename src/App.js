@@ -129,7 +129,7 @@ function App(props) {
         </Toolbar>
       </AppBar>
       <Toolbar id="back-to-top-anchor" />
-      <Container>
+      <Container className="news-aggregator-section">
         <Box sx={{ my: 2 }}>
           <NewsAggregator
             query={query}

@@ -15,11 +15,22 @@
 .filled-search,
 .outlined-select-Categories,
 .outlined-select-Sources,
-.filled-date {
+.filled-date,
+.filled-author {
   width: 30% !important;
 
   svg {
     color: #ffffff;
+  }
+  div {
+    color: #ffffff !important;
+    font-weight: normal !important;
+    &::before {
+      border: none !important;
+    }
+    &:focus {
+      background-color: #1976d2 !important;
+    }
   }
 }
 
@@ -46,17 +57,6 @@
   flex-wrap: nowrap;
   align-items: center;
   justify-content: space-around;
-
-  .MuiInputBase-root.MuiInput-root.MuiInput-underline.MuiInputBase-colorPrimary.MuiInputBase-formControl.css-1eed5fa-MuiInputBase-root-MuiInput-root {
-    color: #ffffff !important;
-    font-weight: normal !important;
-  }
-  .css-1rxz5jq-MuiSelect-select-MuiInputBase-input-MuiInput-input:focus {
-    background-color: #1976d2 !important;
-  }
-  .MuiInputBase-root.MuiInput-root.MuiInput-underline.MuiInputBase-colorPrimary.MuiInputBase-formControl.css-1eed5fa-MuiInputBase-root-MuiInput-root::before {
-    border: none !important;
-  }
 }
 
 .scroll-back-to-top {
@@ -64,7 +64,7 @@
   background-color: #1976d2 !important;
 }
 
-.css-1oqqzyl-MuiContainer-root {
+.news-aggregator-section {
   max-width: max-content !important;
 }
 

@@ -1,0 +1,77 @@
+* {
+  box-sizing: border-box;
+  font-family: Poppins !important;
+}
+
+.article-section {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 5rem;
+}
+
+.filled-search,
+.outlined-select-Categories,
+.outlined-select-Sources {
+  width: 30% !important;
+
+  svg {
+    color: #ffffff;
+  }
+}
+
+.pagination-controls {
+  margin: 40px 0px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.news-navbar {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+
+  h3 {
+    font-weight: normal;
+  }
+}
+.news-fields {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-around;
+
+  .MuiInputBase-root.MuiInput-root.MuiInput-underline.MuiInputBase-colorPrimary.MuiInputBase-formControl.css-1eed5fa-MuiInputBase-root-MuiInput-root {
+    color: #ffffff !important;
+    font-weight: normal !important;
+  }
+  .css-1rxz5jq-MuiSelect-select-MuiInputBase-input-MuiInput-input:focus {
+    background-color: #1976d2 !important;
+  }
+  .MuiInputBase-root.MuiInput-root.MuiInput-underline.MuiInputBase-colorPrimary.MuiInputBase-formControl.css-1eed5fa-MuiInputBase-root-MuiInput-root::before {
+    border: none !important;
+  }
+}
+
+.scroll-back-to-top {
+  color: #ffffff !important;
+  background-color: #1976d2 !important;
+}
+
+.css-1oqqzyl-MuiContainer-root {
+  max-width: max-content !important;
+}
+
+@media (max-width: 600px) {
+  .news-fields {
+    flex-direction: column;
+    align-items: start;
+    margin-right: -13rem;
+    width: 100%;
+  }
+}

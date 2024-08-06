@@ -1,0 +1,59 @@
+.article-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  margin: 3rem 1rem;
+  padding: 1rem;
+}
+
+.article-card {
+  width: 31%;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.article-card:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  transform: scale(1.1);
+}
+
+.article-image {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+}
+
+.article-title {
+  font-size: 1.5rem;
+  margin: 8px 0;
+  font-weight: 600;
+}
+
+.article-description {
+  font-size: 1em;
+  color: #555;
+}
+
+.article-card a:hover {
+  text-decoration: underline;
+}
+
+.article-card a {
+  color: #1a0dab;
+  text-decoration: none;
+}
+
+@media (max-width: 600px) {
+  .article-title,
+  .article-description {
+    font-size: 1rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

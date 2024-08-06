@@ -46,6 +46,7 @@ function App(props) {
     { value: "Business", label: "Business" },
     { value: "Science", label: "Science" },
     { value: "Entertainment", label: "Entertainment" },
+    { value: "Games", label: "Games" },
   ];
 
   const Sources = [

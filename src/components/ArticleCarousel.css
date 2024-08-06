@@ -12,6 +12,7 @@
   border-radius: 4px;
   object-fit: fill;
 }
+
 @media (max-width: 600px) {
   .article-carousel-grid {
     flex-direction: column !important;

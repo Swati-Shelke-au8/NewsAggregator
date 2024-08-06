@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
@@ -39,6 +39,50 @@ function App(props) {
   const [category, setCategory] = useState("All Categories");
   const [source, setSource] = useState("All Sources");
 
+  useEffect(() => {
+    const savedQuery = localStorage.getItem("query");
+    const savedDate = localStorage.getItem("date");
+    const savedAuthor = localStorage.getItem("author");
+    const savedCategory = localStorage.getItem("category");
+    const savedSource = localStorage.getItem("source");
+
+    if (savedQuery) setQuery(savedQuery);
+    if (savedDate) setDate(savedDate);
+    if (savedAuthor) setAuthor(savedAuthor);
+    if (savedCategory) setCategory(savedCategory);
+    if (savedSource) setSource(savedSource);
+  }, []);
+
+  const handleQueryChange = (e) => {
+    const newQuery = e.target.value;
+    setQuery(newQuery);
+    localStorage.setItem("query", newQuery);
+  };
+
+  const handleDateChange = (e) => {
+    const newDate = e.target.value;
+    setDate(newDate);
+    localStorage.setItem("date", newDate);
+  };
+
+  const handleAuthorChange = (e) => {
+    const newAuthor = e.target.value;
+    setAuthor(newAuthor);
+    localStorage.setItem("author", newAuthor);
+  };
+
+  const handleCategoryChange = (e) => {
+    const newCategory = e.target.value;
+    setCategory(newCategory);
+    localStorage.setItem("category", newCategory);
+  };
+
+  const handleSourceChange = (e) => {
+    const newSource = e.target.value;
+    setSource(newSource);
+    localStorage.setItem("source", newSource);
+  };
+
   const Categories = [
     { value: "All Categories", label: "All Categories" },
     { value: "Technology", label: "Technology" },
@@ -72,7 +116,7 @@ function App(props) {
               variant="standard"
               type="search"
               value={query}
-              onChange={(e) => setQuery(e.target.value)}
+              onChange={handleQueryChange}
               sx={{ ml: 1, mr: 1 }}
             />
             <TextField
@@ -82,7 +126,7 @@ function App(props) {
               placeholder="Author"
               value={author}
               type="text"
-              onChange={(e) => setAuthor(e.target.value)}
+              onChange={handleAuthorChange}
               sx={{ ml: 1, mr: 1 }}
             />
             <TextField
@@ -91,7 +135,7 @@ function App(props) {
               variant="standard"
               type="date"
               value={date}
-              onChange={(e) => setDate(e.target.value)}
+              onChange={handleDateChange}
               sx={{ ml: 1, mr: 1 }}
             />
             <TextField
@@ -100,7 +144,7 @@ function App(props) {
               select
               label=""
               value={category}
-              onChange={(e) => setCategory(e.target.value)}
+              onChange={handleCategoryChange}
               sx={{ ml: 1, mr: 1 }}
               variant="standard"
             >
@@ -116,7 +160,7 @@ function App(props) {
               select
               label=""
               value={source}
-              onChange={(e) => setSource(e.target.value)}
+              onChange={handleSourceChange}
               sx={{ ml: 1 }}
               variant="standard"
             >

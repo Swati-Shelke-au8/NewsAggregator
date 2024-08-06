@@ -62,9 +62,7 @@
 
 @media (max-width: 600px) {
   .article-title,
-  .article-description,
-  .article-carousel-title,
-  .article-carousel-discription {
+  .article-description {
     font-size: 1rem;
     overflow: hidden;
     text-overflow: ellipsis;

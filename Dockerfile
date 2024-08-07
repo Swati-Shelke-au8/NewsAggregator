@@ -1,6 +1,6 @@
 # Use the official Node.js image.
 # https://hub.docker.com/_/node
-FROM node:18
+FROM node:20
 
 # Set the working directory in the container.
 WORKDIR /app
@@ -22,7 +22,7 @@ RUN npm run build
 RUN npm install -g serve
 
 # Set the command to run your app using serve.
-CMD ["serve", "-s", "build"]
+CMD ["serve", "-s", "build","-l", "5000"]
 
 # Expose port 5000.
 EXPOSE 5000

@@ -19,50 +19,45 @@ Ensure you have the following installed:
 ### 1. Clone the Repository
 
 First, clone the repository to your local machine:
-bash
-git clone https://github.com/Swati-Shelke-au8/NewsAggregator.git
-cd NewsAggregator
+
+`git clone https://github.com/Swati-Shelke-au8/NewsAggregator.git`
+
+`cd NewsAggregator`
 
 ### 2. Create the Docker Image
 
 Navigate to the root directory of the project where the `Dockerfile` is located and build the Docker image:
-bash
-docker build -t news-aggregator .
+
+`docker build -t news-aggregator .`
 
 ### 3. Run the Docker Container
 
 Run the Docker container using the image you just built:
-bash
-docker run -p 5000:5000 news-aggregator
+
+`docker run -p 5000:5000 news-aggregator`
 
 This command maps port 5000 on your host machine to port 5000 in the Docker container. You can now access the application by navigating to `http://localhost:5000` in your web browser.
 
 ### 4. Using Docker Compose
 
-Docker Compose can be used to simplify the running of the application. Ensure you have the `docker-compose.yml` file in the root directory with the following content:
-yaml
-version: '3'
-services:
-web:
-build: .
-ports: - "5000:5000"
+Docker Compose can be used to simplify the running of the application. Ensure you have the `docker-compose.yml` file in the root directory.
 
 Run the following command to start the application using Docker Compose:
-bash
-docker-compose up
+
+`docker-compose up`
 
 This will build the image (if not already built) and start the container. The application will be accessible at `http://localhost:5000`.
 
 ### 5. Verify and Access the Application
 
 Once the container is running, open your web browser and go to:
-plaintext
+
 http://localhost:5000
 
 You should see the News Aggregator application running.
 
 ## Conclusion
 
-By following these steps, you should be able to build and run the News Aggregator application using Docker.
+By following these steps, you can build and run the News Aggregator application using Docker.
 
 If you have any further questions or need additional assistance, feel free to reach out to ghogareswati14@gmail.com
